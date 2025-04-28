@@ -1,0 +1,39 @@
+services:
+  styletts2-api:
+    image: styletts2-api:latest
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  seed-vc-api:
+    image: seed-vc-api:latest
+    ports:
+      - "8001:8000"
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  make-an-audio-api:
+    image: make-an-audio-api:latest
+    ports:
+      - "8002:8000"
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
