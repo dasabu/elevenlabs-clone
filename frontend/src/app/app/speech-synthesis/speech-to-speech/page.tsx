@@ -3,8 +3,9 @@ import { getHistoryItems } from "~/lib/history";
 import { auth } from "~/server/auth";
 import { db } from "~/server/db";
 import { TextToSpeechEditor } from "../../../components/clients/speech-synthesis/text-to-speech-editor";
+import { VoiceChanger } from "~/app/components/clients/speech-synthesis/voice-changer";
 
-export default async function TextToSpeechPage() {
+export default async function SpeechToSpeechPage() {
   const session = await auth()
   const userId = session?.user.id
 
@@ -22,17 +23,17 @@ export default async function TextToSpeechPage() {
     credits = user?.credits ?? 0
   }
 
-  const service = "styletts2"
+  const service = "seed-vc"
 
   const historyItems = await getHistoryItems(service)
 
   return (
     <PageLayout
-      title="Text to Speech"
+      title="Voice changer"
       service={service}
       historyItems={historyItems}
     >
-      <TextToSpeechEditor service={service} credits={credits} />
+      <VoiceChanger credits={credits} service={service}/>
     </PageLayout>
   )
 }

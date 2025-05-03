@@ -1,10 +1,9 @@
 import { PageLayout } from "~/app/components/clients/page-layout";
-import { getHistoryItems } from "~/lib/history";
 import { auth } from "~/server/auth";
 import { db } from "~/server/db";
-import { TextToSpeechEditor } from "../../../components/clients/speech-synthesis/text-to-speech-editor";
+import { SoundEffectsGenerator } from "~/app/components/clients/sound-effects/sound-effect-generator";
 
-export default async function TextToSpeechPage() {
+export default async function SoundEffectsGeneratorPage() {
   const session = await auth()
   const userId = session?.user.id
 
@@ -22,17 +21,21 @@ export default async function TextToSpeechPage() {
     credits = user?.credits ?? 0
   }
 
-  const service = "styletts2"
+  const service = "make-an-audio"
 
-  const historyItems = await getHistoryItems(service)
+  const soundEffectsTab = [
+    { name: "Generate", path: "/app/sound-effects/generate" },
+    { name: "History", path: "/app/sound-effects/history" },
+  ]
 
   return (
     <PageLayout
-      title="Text to Speech"
+      title="Sound effects"
+      showSidebar={false}
+      tabs={soundEffectsTab}
       service={service}
-      historyItems={historyItems}
     >
-      <TextToSpeechEditor service={service} credits={credits} />
+      <SoundEffectsGenerator credits={credits} />
     </PageLayout>
   )
 }

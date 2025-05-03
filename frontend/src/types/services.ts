@@ -1,0 +1,1 @@
+export type ServiceType = "styletts2" | "seed-vc" | "make-an-audio"

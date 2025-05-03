@@ -19,7 +19,10 @@ export const env = createEnv({
     AWS_SECRET_ACCESS_KEY: z.string(),
     AWS_REGION: z.string(),
     S3_BUCKET_NAME: z.string(),
-    BACKEND_API_KEY: z.string()
+    BACKEND_API_KEY: z.string(),
+    STYLETTS2_API_ROUTE: z.string(),
+    SEED_VC_API_ROUTE: z.string(),
+    MAKE_AN_AUDIO_ROUTE: z.string(),
   },
 
   /**
@@ -43,7 +46,10 @@ export const env = createEnv({
     AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
     AWS_REGION: process.env.AWS_REGION,
     S3_BUCKET_NAME: process.env.S3_BUCKET_NAME,
-    BACKEND_API_KEY: process.env.BACKEND_API_KEY
+    BACKEND_API_KEY: process.env.BACKEND_API_KEY,
+    STYLETTS2_API_ROUTE: process.env.STYLETTS2_API_ROUTE,
+    SEED_VC_API_ROUTE: process.env.SEED_VC_API_ROUTE,
+    MAKE_AN_AUDIO_ROUTE: process.env.MAKE_AN_AUDIO_ROUTE,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
